@@ -18,11 +18,10 @@
     
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://api.remove.bg">
-    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
     
-    <!-- Google AdSense - REPLACE {{ADSENSE_CLIENT}} with your actual client ID -->
-    <!-- SECURITY WARNING: Do not commit real AdSense IDs to public repositories -->
-    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-{{ADSENSE_CLIENT}}" crossorigin="anonymous"></script> -->
+    <!-- Google AdMob -->
+    <script async src="https://media.ads.admob.com/api/v1/gdpr_consent.js"></script>
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
     
     <title>AI Background Remover - Remove Image Backgrounds Instantly</title>
     
@@ -86,39 +85,6 @@
             padding: 2rem;
             margin-bottom: 2rem;
             transition: var(--transition);
-        }
-
-        .api-key-section {
-            background: var(--light);
-            border-left: 4px solid var(--primary);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e9ecef;
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        input[type="text"]:focus,
-        input[type="password"]:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
         }
 
         .btn {
@@ -295,14 +261,31 @@
             text-align: center;
             margin: 2rem 0;
             color: var(--gray);
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .ad-label {
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             opacity: 0.7;
+        }
+
+        .ad-placeholder {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .ad-text {
+            font-size: 0.9rem;
+            max-width: 300px;
+            line-height: 1.4;
         }
 
         footer {
@@ -324,16 +307,50 @@
             display: none;
         }
 
-        .ads-config {
-            background: var(--light);
-            padding: 1.5rem;
+        .demo-ads {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .demo-ad {
+            background: white;
             border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 2px solid #e9ecef;
+        }
+
+        .demo-ad h4 {
+            color: var(--primary);
             margin-bottom: 1rem;
         }
 
-        .ads-config h3 {
+        .demo-ad p {
+            color: var(--gray);
+            font-size: 0.9rem;
             margin-bottom: 1rem;
-            color: var(--dark);
+        }
+
+        .api-info {
+            background: var(--light);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .api-info a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .api-info a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -348,54 +365,11 @@
         <!-- Top Ad Slot -->
         <div class="ad-container">
             <div class="ad-label">Advertisement</div>
-            <!-- Google AdSense Slot - REPLACE {{ADSENSE_CLIENT}} and {{ADSENSE_SLOT}} -->
-            <!-- 
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-{{ADSENSE_CLIENT}}"
-                 data-ad-slot="{{ADSENSE_SLOT}}"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            -->
-            <p>Ad space - Configure your AdSense IDs in the settings below</p>
-        </div>
-
-        <!-- API Key Configuration -->
-        <div class="card api-key-section">
-            <h2>API Configuration</h2>
-            <p style="margin-bottom: 1rem; color: var(--gray);">
-                You need a Remove.bg API key. <a href="https://www.remove.bg/api" target="_blank" style="color: var(--primary);">Get free API credits here</a>
-            </p>
-            
-            <div class="form-group">
-                <label for="apiKey">Remove.bg API Key</label>
-                <input type="password" id="apiKey" placeholder="43VHSyGF4sC31mUXsBNFcv9r" 
-                       value="{{REMOVE_BG_API_KEY}}">
-                <small style="color: var(--gray); display: block; margin-top: 0.5rem;">
-                    Your API key is saved locally in your browser and never sent to our servers.
-                </small>
+            <div class="ad-placeholder">📱</div>
+            <div class="ad-text">AdMob Banner Ad would display here</div>
+            <div style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.6;">
+                Banner Ad - 320x100
             </div>
-            
-            <button class="btn btn-primary" onclick="saveApiKey()">
-                Save API Key
-            </button>
-        </div>
-
-        <!-- AdSense Configuration -->
-        <div class="card ads-config">
-            <h3>AdSense Configuration (Optional)</h3>
-            <div class="form-group">
-                <label for="adsenseClient">AdSense Client ID (ca-pub-...)</label>
-                <input type="text" id="adsenseClient" placeholder="ca-pub-XXXXXXXXXXXXXXX" value="{{ADSENSE_CLIENT}}">
-            </div>
-            <div class="form-group">
-                <label for="adsenseSlot">AdSense Slot ID</label>
-                <input type="text" id="adsenseSlot" placeholder="XXXXXXXXXX" value="{{ADSENSE_SLOT}}">
-            </div>
-            <button class="btn btn-secondary" onclick="saveAdSenseConfig()">
-                Save Ad Settings
-            </button>
         </div>
 
         <!-- Upload Area -->
@@ -444,35 +418,65 @@
             </div>
         </div>
 
+        <!-- Demo Ads Section -->
+        <div class="card">
+            <h3>AdMob Ad Placeholders</h3>
+            <p style="color: var(--gray); margin-bottom: 1rem;">These spaces are reserved for AdMob advertisements</p>
+            
+            <div class="demo-ads">
+                <div class="demo-ad">
+                    <h4>Interstitial Ad</h4>
+                    <p>Full-screen ad shown at natural breaks in the app flow</p>
+                    <div class="ad-placeholder" style="font-size: 2rem;">🎯</div>
+                </div>
+                
+                <div class="demo-ad">
+                    <h4>Rewarded Ad</h4>
+                    <p>Users watch ads in exchange for rewards or premium features</p>
+                    <div class="ad-placeholder" style="font-size: 2rem;">🎁</div>
+                </div>
+                
+                <div class="demo-ad">
+                    <h4>Native Ad</h4>
+                    <p>Customizable ads that match your app's design</p>
+                    <div class="ad-placeholder" style="font-size: 2rem;">🔄</div>
+                </div>
+            </div>
+        </div>
+
         <!-- Bottom Ad Slot -->
         <div class="ad-container">
             <div class="ad-label">Advertisement</div>
-            <!-- Google AdSense Slot - REPLACE {{ADSENSE_CLIENT}} and {{ADSENSE_SLOT}} -->
-            <!-- 
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-{{ADSENSE_CLIENT}}"
-                 data-ad-slot="{{ADSENSE_SLOT}}"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            -->
-            <p>Ad space - Configure your AdSense IDs in the settings above</p>
+            <div class="ad-placeholder">📊</div>
+            <div class="ad-text">AdMob Medium Rectangle Ad would display here</div>
+            <div style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.6;">
+                Medium Rectangle - 300x250
+            </div>
+        </div>
+
+        <!-- Footer Ad Slot -->
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <div class="ad-placeholder">🚀</div>
+            <div class="ad-text">AdMob Native Ad would integrate here</div>
+            <div style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.6;">
+                Native Ad - Fluid
+            </div>
         </div>
 
         <!-- Footer -->
         <footer>
             <p>&copy; 2024 AI Background Remover. Free tool powered by Remove.bg API.</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Ad spaces configured for AdMob integration</p>
         </footer>
     </div>
 
     <script>
         // =============================================================================
-        // SECURITY WARNING: For development only!
-        // Do not hardcode real API keys in public repositories or production code.
-        // Instead, use environment variables or server-side handling.
+        // Remove.bg API Configuration
+        // Paste your API key below for development
         // =============================================================================
-        // const REMOVE_BG_API_KEY = 'PASTE_YOUR_API_KEY_HERE'; // Development only!
+        const REMOVE_BG_API_KEY = 'YOUR_API_KEY_HERE'; // Replace with your actual API key
 
         // DOM Elements
         const uploadArea = document.getElementById('uploadArea');
@@ -484,7 +488,6 @@
         const processedPreview = document.getElementById('processedPreview');
         const processBtn = document.getElementById('processBtn');
         const downloadBtn = document.getElementById('downloadBtn');
-        const apiKeyInput = document.getElementById('apiKey');
 
         // State
         let currentFile = null;
@@ -492,9 +495,11 @@
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            loadApiKey();
-            loadAdSenseConfig();
             setupEventListeners();
+            initializeAdPlaceholders();
+            
+            // Show initial instruction
+            showStatus('Upload an image to remove background automatically', 'success');
         });
 
         function setupEventListeners() {
@@ -505,6 +510,11 @@
             uploadArea.addEventListener('dragover', handleDragOver);
             uploadArea.addEventListener('dragleave', handleDragLeave);
             uploadArea.addEventListener('drop', handleDrop);
+        }
+
+        function initializeAdPlaceholders() {
+            console.log('AdMob ad placeholders initialized');
+            // In a real implementation, this would initialize AdMob ads
         }
 
         function handleDragOver(e) {
@@ -566,10 +576,14 @@
                     <img src="${e.target.result}" alt="Original image preview" class="preview-image" loading="lazy">
                 `;
                 previewSection.classList.remove('hidden');
-                processedPreview.innerHTML = '<div class="placeholder-image">Processed image will appear here</div>';
+                processedPreview.innerHTML = '<div class="placeholder-image">Background will be removed automatically...</div>';
                 downloadBtn.classList.add('hidden');
                 processedImageUrl = null;
-                showStatus('Image ready for processing. Click "Remove Background" to start.', 'success');
+                
+                // Auto-process the image
+                setTimeout(() => {
+                    processImage();
+                }, 500);
             };
             reader.readAsDataURL(file);
         }
@@ -580,16 +594,16 @@
                 return;
             }
 
-            const apiKey = getApiKey();
-            if (!apiKey) {
-                showStatus('Please enter your Remove.bg API key in the configuration section above.', 'error');
+            const apiKey = REMOVE_BG_API_KEY;
+            if (!apiKey || apiKey === 'YOUR_API_KEY_HERE') {
+                showStatus('API key not configured. Please contact the administrator.', 'error');
                 return;
             }
 
             // Show processing state
             processBtn.disabled = true;
             processBtn.innerHTML = '<div class="spinner" style="width: 20px; height: 20px;"></div> Processing...';
-            processedPreview.innerHTML = '<div class="spinner"></div><p>Removing background...</p>';
+            processedPreview.innerHTML = '<div class="spinner"></div><p>Removing background with AI...</p>';
 
             try {
                 const formData = new FormData();
@@ -619,12 +633,15 @@
                 downloadBtn.classList.remove('hidden');
                 showStatus('Background removed successfully! Click "Download Result" to save your image.', 'success');
 
+                // Show interstitial ad placeholder
+                showAdPlaceholder('interstitial');
+
             } catch (error) {
                 console.error('Error processing image:', error);
                 let errorMessage = 'Failed to remove background. ';
                 
                 if (error.message.includes('403') || error.message.includes('insufficient credits')) {
-                    errorMessage += 'Your API key may be invalid or you may have exhausted your credits.';
+                    errorMessage += 'API key may be invalid or credits exhausted.';
                 } else if (error.message.includes('network') || error.message.includes('Failed to fetch')) {
                     errorMessage += 'Network error. Please check your connection.';
                 } else {
@@ -632,7 +649,7 @@
                 }
                 
                 showStatus(errorMessage, 'error');
-                processedPreview.innerHTML = '<div class="placeholder-image">Processing failed</div>';
+                processedPreview.innerHTML = '<div class="placeholder-image">Processing failed. Please try another image.</div>';
             } finally {
                 processBtn.disabled = false;
                 processBtn.textContent = 'Remove Background';
@@ -653,6 +670,19 @@
             document.body.removeChild(link);
             
             showStatus('Download started!', 'success');
+            
+            // Show rewarded ad placeholder
+            showAdPlaceholder('rewarded');
+        }
+
+        function showAdPlaceholder(type) {
+            const adTypes = {
+                'interstitial': '🎯 Full-screen Interstitial Ad shown',
+                'rewarded': '🎁 Rewarded Ad opportunity',
+                'banner': '📱 Banner Ad refresh'
+            };
+            
+            console.log(`${adTypes[type]} - AdMob integration ready`);
         }
 
         function resetTool() {
@@ -668,7 +698,7 @@
                 URL.revokeObjectURL(processedImageUrl);
             }
             
-            showStatus('Upload an image to get started.', 'success');
+            showStatus('Upload an image to remove background automatically', 'success');
         }
 
         function showStatus(message, type = 'info') {
@@ -677,58 +707,17 @@
             statusMessage.classList.remove('hidden');
         }
 
-        // API Key Management
-        function getApiKey() {
-            // First check localStorage, then fallback to hardcoded (for development)
-            return localStorage.getItem('removeBgApiKey') || 
-                   (typeof REMOVE_BG_API_KEY !== 'undefined' ? REMOVE_BG_API_KEY : '');
+        // AdMob Simulation
+        function simulateAdMobIntegration() {
+            console.log('AdMob integration points:');
+            console.log('1. Banner ads at top, middle, and bottom');
+            console.log('2. Interstitial after image processing');
+            console.log('3. Rewarded ad after download');
+            console.log('4. Native ads in demo section');
         }
 
-        function saveApiKey() {
-            const apiKey = apiKeyInput.value.trim();
-            if (!apiKey) {
-                showStatus('Please enter an API key.', 'error');
-                return;
-            }
-            
-            localStorage.setItem('removeBgApiKey', apiKey);
-            showStatus('API key saved successfully!', 'success');
-        }
-
-        function loadApiKey() {
-            const savedKey = localStorage.getItem('removeBgApiKey');
-            if (savedKey) {
-                apiKeyInput.value = savedKey;
-            }
-        }
-
-        // AdSense Configuration
-        function saveAdSenseConfig() {
-            const clientId = document.getElementById('adsenseClient').value.trim();
-            const slotId = document.getElementById('adsenseSlot').value.trim();
-            
-            if (clientId || slotId) {
-                localStorage.setItem('adsenseClient', clientId);
-                localStorage.setItem('adsenseSlot', slotId);
-                showStatus('AdSense configuration saved. Refresh to see ads.', 'success');
-            } else {
-                showStatus('AdSense configuration cleared.', 'success');
-                localStorage.removeItem('adsenseClient');
-                localStorage.removeItem('adsenseSlot');
-            }
-        }
-
-        function loadAdSenseConfig() {
-            const savedClient = localStorage.getItem('adsenseClient');
-            const savedSlot = localStorage.getItem('adsenseSlot');
-            
-            if (savedClient) {
-                document.getElementById('adsenseClient').value = savedClient;
-            }
-            if (savedSlot) {
-                document.getElementById('adsenseSlot').value = savedSlot;
-            }
-        }
+        // Initialize ad simulation
+        simulateAdMobIntegration();
     </script>
 </body>
 </html>
